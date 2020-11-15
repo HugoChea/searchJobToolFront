@@ -29,10 +29,6 @@ body{
     color : white;
 }
 
-.test{
-    background-color : red;
-}
-
 .navbar{
     margin : 0.5em !important;  
     text-decoration : none;

@@ -41,13 +41,15 @@ function Login(props) {
     const [error, seterror] = useState(null);
 
     useEffect(() => {
-		console.log("test")
+		
         if (props.auth.isAuthenticated) {
             props.history.push("/dashboard");
         }
         if (
             props.errors.email !== undefined ||
-            props.errors.password !== undefined
+            props.errors.password !== undefined ||
+            props.errors.emailnotfound !== undefined ||
+            props.errors.passwordincorrect !== undefined
         ) {
             seterror(true);
         }
@@ -83,6 +85,7 @@ function Login(props) {
                                     {props.errors.email}
                                     {props.errors.password}
                                     {props.errors.passwordincorrect}
+                                    {props.errors.emailnotfound}
                                 </Alert>
                             )}
                         </Grid>
