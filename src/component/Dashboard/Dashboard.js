@@ -16,6 +16,8 @@ import {
     TextField,
     InputAdornment,
     MenuItem,
+    Card,
+    CardContent,
 } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -149,7 +151,7 @@ function Dashboard(props) {
                     alignItems="stretch"
                     className="test"
                 >
-                    <h2>Mes applications</h2>
+                    <h2>Mes candidatures</h2>
                     <Grid
                         container
                         direction="row"
@@ -319,11 +321,39 @@ function Dashboard(props) {
             </Dialog>
 
             <Container>
-            <table>
+            
                 {jobs.map((item =>
-                <tr><td>{item.position}</td></tr>
+                <Card>
+                    
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                    >
+                        <Grid item xs={2}>
+                            <CardContent>{item.company}</CardContent>
+                        </Grid>
+                        <Grid item xs={2}>
+                        <CardContent>{item.position}</CardContent>
+                        </Grid>
+                        <Grid item xs={2}>
+                        <CardContent>{item.stack}</CardContent>
+                        </Grid>
+                        <Grid item xs={4}>
+                        <CardContent>{item.comment}</CardContent>
+                        </Grid>
+                        <Grid item xs={1}>
+                        <CardContent>{item.status}</CardContent>
+                        </Grid>
+                        <Grid item xs={1}>
+                        <CardContent>More</CardContent>
+                        </Grid>
+                </Grid>
+            </Card>
+                
                 ))}
-            </table>
+            
             </Container>
         </Box>
     );

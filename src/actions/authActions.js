@@ -5,6 +5,10 @@ import API_ROUTE from "../const/param";
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
+    dispatch({
+        type: GET_ERRORS,
+        payload: "",
+    })
     axios
         .post(`${API_ROUTE}api/users/register`, userData)
         .then((res) => history.push("/login")) // re-direct to login on successful register
@@ -17,9 +21,14 @@ export const registerUser = (userData, history) => (dispatch) => {
 };
 // Login - get user token
 export const loginUser = (userData) => (dispatch) => {
+    dispatch({
+        type: GET_ERRORS,
+        payload: "",
+    })
     axios
         .post(`${API_ROUTE}api/users/login`, userData)
         .then((res) => {
+            console.log(res)
             // Save to localStorage
             // Set token to localStorage
             const { token } = res.data;
