@@ -49,9 +49,9 @@ const applicationStatus = [
 ];
 
 function Dashboard(props) {
-    const { user } = props.auth
+    const { user } = props.auth;
 
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -61,15 +61,22 @@ function Dashboard(props) {
         setOpen(false);
     };
 
-    const [company, setCompany] = useState("")
-    const [position, setPosition] = useState("")
-    const [stack, setStack] = useState("")
-    const [link, setLink] = useState("")
-    const [contact, setContact] = useState("")
-    const [description, setDescription] = useState("")
-    const [comment, setComment] = useState("")
-    const [status, setStatus] = useState("0")
-    const [jobs, setJobs] = useState([])
+    const showApplicationDetail = (classElement) => {
+        
+    };
+    const hideApplicationDetail = (classElement) => {
+
+    };
+
+    const [company, setCompany] = useState("");
+    const [position, setPosition] = useState("");
+    const [stack, setStack] = useState("");
+    const [link, setLink] = useState("");
+    const [contact, setContact] = useState("");
+    const [description, setDescription] = useState("");
+    const [comment, setComment] = useState("");
+    const [status, setStatus] = useState("0");
+    const [jobs, setJobs] = useState([]);
 
     const handleCompanyChange = (event) => {
         setCompany(event.target.value);
@@ -106,8 +113,8 @@ function Dashboard(props) {
     const handleSubmitApplication = (event) => {
         event.preventDefault();
         const newJob = {
-            author : user.id,
-            company : company,
+            author: user.id,
+            company: company,
             position: position,
             stack: stack,
             link: link,
@@ -117,19 +124,26 @@ function Dashboard(props) {
             status: status,
         };
         addJob(newJob, (res) => {
-            setJobs([])     //trigger re rendering of use effect
-            handleClose()
-        })
-        
+            setJobs([]); //trigger re rendering of use effect
+            handleClose();
+            setCompany("");
+            setPosition("");
+            setStack("");
+            setLink("");
+            setContact("");
+            setDescription("");
+            setComment("");
+            setStatus("");
+        });
     };
 
     useEffect(() => {
-        if (jobs.length === 0){
-            getJobs(user, res=> {
-                setJobs(res)
-            })
+        if (jobs.length === 0) {
+            getJobs(user, (res) => {
+                setJobs(res);
+            });
         }
-    }, [jobs, user])
+    }, [jobs, user]);
 
     return (
         <Box pt={2}>
@@ -321,39 +335,73 @@ function Dashboard(props) {
             </Dialog>
 
             <Container>
-            
-                {jobs.map((item =>
-                <Card>
-                    
                 <Grid
                     container
                     direction="row"
                     justify="flex-start"
                     alignItems="center"
-                    >
-                        <Grid item xs={2}>
-                            <CardContent>{item.company}</CardContent>
-                        </Grid>
-                        <Grid item xs={2}>
-                        <CardContent>{item.position}</CardContent>
-                        </Grid>
-                        <Grid item xs={2}>
-                        <CardContent>{item.stack}</CardContent>
-                        </Grid>
-                        <Grid item xs={4}>
-                        <CardContent>{item.comment}</CardContent>
-                        </Grid>
-                        <Grid item xs={1}>
-                        <CardContent>{item.status}</CardContent>
-                        </Grid>
-                        <Grid item xs={1}>
-                        <CardContent>More</CardContent>
-                        </Grid>
+                >
+                    <Grid item xs={2}>
+                        Company
+                    </Grid>
+                    <Grid item xs={2}>
+                        Position
+                    </Grid>
+                    <Grid item xs={2}>
+                        Stack
+                    </Grid>
+                    <Grid item xs={4}>
+                        Comment
+                    </Grid>
+                    <Grid item xs={1}>
+                        Status
+                    </Grid>
                 </Grid>
-            </Card>
-                
+                {jobs.map((item) => (
+                    <Container key={item._id}>
+                        <Card>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                            >
+                                <Grid item xs={2}>
+                                    <CardContent>{item.company}</CardContent>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <CardContent>{item.position}</CardContent>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <CardContent>{item.stack}</CardContent>
+                                </Grid>
+                                <Grid item xs={4}>
+                                    <CardContent>{item.comment}</CardContent>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <CardContent>
+                                        {item.status === 0 && <strong>Non postulé</strong>}
+                                        {item.status === 1 && <strong>En attente</strong>}
+                                        {item.status === 2 && <strong>En discussion</strong>}
+                                        {item.status === 3 && <strong>Refusé</strong>}
+                                        {item.status === 4 && <strong>Validé</strong>}
+                                    </CardContent>
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <CardContent><Button className={`min-${item._id}`} onClick={showApplicationDetail(item._id)}>More</Button><Button className={`hidden details-${item._id}`} onClick={hideApplicationDetail(item._id)}>Hide</Button></CardContent>
+                                </Grid>
+                            </Grid>
+                        </Card>
+                        <Card className={`hidden details-${item._id}`}>
+                            
+                            {item.company}
+                            {item.position}
+                            {item.stack}
+                            {item.link}
+                            {item.contact}
+                        </Card>
+                    </Container>
                 ))}
-            
             </Container>
         </Box>
     );
