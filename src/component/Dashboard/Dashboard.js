@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addJob, getJobs } from "../../actions/jobsActions";
+import Application from "./Application";
 
 import {
     Grid,
@@ -16,8 +17,6 @@ import {
     TextField,
     InputAdornment,
     MenuItem,
-    Card,
-    CardContent,
 } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -59,13 +58,6 @@ function Dashboard(props) {
 
     const handleClose = () => {
         setOpen(false);
-    };
-
-    const showApplicationDetail = (classElement) => {
-        
-    };
-    const hideApplicationDetail = (classElement) => {
-
     };
 
     const [company, setCompany] = useState("");
@@ -358,49 +350,7 @@ function Dashboard(props) {
                     </Grid>
                 </Grid>
                 {jobs.map((item) => (
-                    <Container key={item._id}>
-                        <Card>
-                            <Grid
-                                container
-                                direction="row"
-                                justify="flex-start"
-                                alignItems="center"
-                            >
-                                <Grid item xs={2}>
-                                    <CardContent>{item.company}</CardContent>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <CardContent>{item.position}</CardContent>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <CardContent>{item.stack}</CardContent>
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <CardContent>{item.comment}</CardContent>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <CardContent>
-                                        {item.status === 0 && <strong>Non postulé</strong>}
-                                        {item.status === 1 && <strong>En attente</strong>}
-                                        {item.status === 2 && <strong>En discussion</strong>}
-                                        {item.status === 3 && <strong>Refusé</strong>}
-                                        {item.status === 4 && <strong>Validé</strong>}
-                                    </CardContent>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <CardContent><Button className={`min-${item._id}`} onClick={showApplicationDetail(item._id)}>More</Button><Button className={`hidden details-${item._id}`} onClick={hideApplicationDetail(item._id)}>Hide</Button></CardContent>
-                                </Grid>
-                            </Grid>
-                        </Card>
-                        <Card className={`hidden details-${item._id}`}>
-                            
-                            {item.company}
-                            {item.position}
-                            {item.stack}
-                            {item.link}
-                            {item.contact}
-                        </Card>
-                    </Container>
+                    <Application key={item._id} item={item}/>
                 ))}
             </Container>
         </Box>
