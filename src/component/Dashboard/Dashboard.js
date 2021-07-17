@@ -9,6 +9,13 @@ import {
     Grid,
     Container,
     Box,
+    Table,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TableCell,
+    Paper,
+    TableBody
 } from "@material-ui/core";
 
 function Dashboard(props) {
@@ -60,31 +67,26 @@ function Dashboard(props) {
                 </Grid>
             </Container>
             <Container>
-                <Grid
-                    container
-                    direction="row"
-                    justify="flex-start"
-                    alignItems="center"
-                >
-                    <Grid item xs={2}>
-                        Company
-                    </Grid>
-                    <Grid item xs={2}>
-                        Position
-                    </Grid>
-                    <Grid item xs={2}>
-                        Stack
-                    </Grid>
-                    <Grid item xs={4}>
-                        Comment
-                    </Grid>
-                    <Grid item xs={2}>
-                        Status
-                    </Grid>
-                </Grid>
-                {jobs.map((item) => (
-                    <Application key={item._id} item={item}/>
-                ))}
+            <TableContainer component={Paper}>
+                <Table aria-label="collapsible table">
+                    <TableHead>
+                    <TableRow>
+                        
+                        <TableCell align="center">Company</TableCell>
+                        <TableCell align="center">Position</TableCell>
+                        <TableCell align="center">Stack</TableCell>
+                        <TableCell align="center">Comment</TableCell>
+                        <TableCell align="center">Status</TableCell>
+                        <TableCell />
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {jobs.map((item) => (
+                        <Application key={item._id} item={item}/>
+                    ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
             </Container>
         </Box>
     );
