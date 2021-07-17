@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +53,7 @@ function Navbar(props) {
                     noWrap
                     className={classes.toolbarTitle}
                 >
-                    <a href="/" className="navbar nav-menu">Job Search Tool</a>
+                    <Link to="/" className="navbar nav-menu">Job Search Tool</Link>
                 </Typography>
                 <nav>
                     <Link
@@ -87,14 +88,17 @@ function Navbar(props) {
                 {!props.auth.isAuthenticated &&
                     <React.Fragment>
                         <Button
-                            href="/register"
+                            component={Link}
+                            to="/register"
                             variant="outlined"
                             className="navbar navbar-button"
                         >
                             Register
                         </Button>
+                        
                         <Button
-                            href="/login"
+                            component={Link}
+                            to="/login"
                             variant="outlined"
                             className="navbar navbar-button"
                         >

@@ -1,5 +1,8 @@
 import React from "react";
 import { Container, Grid } from "@material-ui/core";
+import organisation from '../../public/organisation.svg';
+import interview from '../../public/interview.svg';
+import job from '../../public/job.svg';
 
 function Flow() {
     return (
@@ -31,7 +34,7 @@ function Flow() {
                     </div>
                 </Grid>
                 <Grid item xs={8} className="left-wrap">
-                    <img src="organisation.svg" className="landing-image" alt="organisation" />
+                    <img src={organisation} className="landing-image" alt="organisation" />
                 </Grid>
             </Grid>
 
@@ -43,7 +46,7 @@ function Flow() {
                 className="bg-dark2 landing-card"
             >
                 <Grid item xs={4} className="left-wrap landing-card-text">
-                    <div><img src="interview.svg" className="landing-image" alt="interview"/></div>
+                    <div><img src={interview} className="landing-image" alt="interview"/></div>
                    
                 </Grid>
                 <Grid item xs={8} className="right-wrap landing-card-text">
@@ -76,7 +79,7 @@ function Flow() {
                 xs={12}
                 >
                     <div>Success !</div>
-                <div><img src="job.svg" className="landing-card-image" alt="success"/></div>
+                <div><img src={job} className="landing-card-image" alt="success"/></div>
                 </Grid>
                 
                 

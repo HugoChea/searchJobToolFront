@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Grid } from "@material-ui/core";
+import home from '../../public/home.svg';
 
 function Landing() {
     return (
@@ -12,7 +13,7 @@ function Landing() {
                 className="fullscreen"
             >
                 <Grid item display={{ xs: 'none', sm: 'block' }} md={7} className="left-wrap">
-                    <img src="home.svg" className="landing-image" alt="landing" />
+                    <img src={home} className="landing-image" alt="landing" />
                 </Grid>
                 <Grid item xs={12} md={5} className="right-wrap">
                     <div>

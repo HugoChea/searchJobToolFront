@@ -37,7 +37,7 @@ if (localStorage.jwtToken) {
 function App() {
     return (
         <Provider store={store}>
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                 <div className="app">
                     <Navbar />
                     <div className="content">
