@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/searchJobToolFront/static/css/main.6692bbb8.chunk.css",
+    "main.js": "/searchJobToolFront/static/js/main.62004082.chunk.js",
+    "main.js.map": "/searchJobToolFront/static/js/main.62004082.chunk.js.map",
+    "runtime-main.js": "/searchJobToolFront/static/js/runtime-main.05914415.js",
+    "runtime-main.js.map": "/searchJobToolFront/static/js/runtime-main.05914415.js.map",
+    "static/js/2.550185a1.chunk.js": "/searchJobToolFront/static/js/2.550185a1.chunk.js",
+    "static/js/2.550185a1.chunk.js.map": "/searchJobToolFront/static/js/2.550185a1.chunk.js.map",
+    "index.html": "/searchJobToolFront/index.html",
+    "precache-manifest.7ac4582224930888c5dbe70c9a7f8006.js": "/searchJobToolFront/precache-manifest.7ac4582224930888c5dbe70c9a7f8006.js",
+    "service-worker.js": "/searchJobToolFront/service-worker.js",
+    "static/css/main.6692bbb8.chunk.css.map": "/searchJobToolFront/static/css/main.6692bbb8.chunk.css.map",
+    "static/js/2.550185a1.chunk.js.LICENSE.txt": "/searchJobToolFront/static/js/2.550185a1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.05914415.js",
+    "static/js/2.550185a1.chunk.js",
+    "static/css/main.6692bbb8.chunk.css",
+    "static/js/main.62004082.chunk.js"
+  ]
+}
