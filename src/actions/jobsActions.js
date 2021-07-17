@@ -21,12 +21,13 @@ export function addJob(data, callback, errorcallback){
       //do something
       console.log(response)
       if(response.status === 200){
-        callback(response.data);
+        callback(response);
       }
     })
     .catch(err => {
       // catch error
-      console.log(err)
+      console.log(err.response)
+      callback(err.response)
     })
   }
 
